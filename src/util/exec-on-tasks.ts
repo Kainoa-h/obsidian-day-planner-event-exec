@@ -6,14 +6,16 @@ const { exec } = require("child_process");
 import { getMinutesSinceMidnight } from "./moment";
 import { createTimestamp, getOneLineSummary } from "./task-utils";
 
-export function notifyAboutStartedTasks(
+// TODO: Implement this function properly
+export function execOnTasks(
   tasks: WithTime<Task>[],
   settings: DayPlannerSettings,
 ) {
   if (tasks.length === 0) {
+    //TODO: heheharhar
     return;
   }
-
+  // TODO: allll this gots to change
   const firstTask = tasks[0];
   const summary = getOneLineSummary(firstTask);
   const timestamp = createTimestamp(
@@ -22,6 +24,23 @@ export function notifyAboutStartedTasks(
     settings.timestampFormat,
   );
 
-  new Notification(`Task started: ${summary}
-${timestamp}`);
+  console.log(`script: ${settings.execScriptPath}`)
+
+  if (settings.execScriptPath) {
+    exec(`bash ${settings.execScriptPath}`, {
+      env: {
+        ...process.env,
+        DAY_PLANNER_EVENT_TITLE: summary,
+        DAY_PLANNER_EVENT_TIMESTAMP: timestamp,
+      },
+    }, (error, stdout, stderr) => {
+      if (error) {
+        new Notice("Day Planner: script failed", 0);
+        console.log(stderr);
+      }
+      else {
+        new Notice("Day Planner: script executed", 5500);
+      }
+    });
+  }
 }
