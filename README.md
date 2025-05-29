@@ -1,10 +1,19 @@
+## What this fork is for
+
+I want to be able to execute bash scripts triggered by the starting of new day planner tasks!  
+Why? This enables my obsidian day planner tasks to act as a sort of publisher of my tasks to other apps in my eco-system!
+
+- Send notification of current task to your phone via [ntfy.sh](https://ntfy.sh/)
+- Send updates of current task to [sketchybar](https://github.com/FelixKratz/SketchyBar)
+
+<details>
+  <summary>Original Readme</summary>
 - 🗳️ [Add '👍' reactions under the issues important to you.](https://github.com/ivan-lednev/obsidian-day-planner/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc) This helps me prioritize my work
 - 🪲 [Report bugs and suggest features](https://github.com/ivan-lednev/obsidian-day-planner/issues)
 - ❓ [Ask questions](https://github.com/ivan-lednev/obsidian-day-planner/discussions/new?category=q-a)
 - 🛠️ [Submit pull-requests](./CONTRIBUTING.md)
 - ❤️ If this project adds value to your life, consider supporting it finantially:
   - <a href="https://www.buymeacoffee.com/machineelf" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
 
 Day Planner is a community plugin for [Obsidian](https://obsidian.md/). It adds editable calendar views and basic time-tracking. Day Planner is integrated with
 
@@ -180,3 +189,5 @@ If for some reason you still want to use the old version, there are community fo
 - Thanks to @liamcain for creating daily note utilities and a helpful calendar plugin
 - Thanks to [Emacs Org Mode](https://orgmode.org/) for an idea of text-based time-tracking
 - Thanks to [Toggl Track](https://track.toggl.com/timer) for an idea of a great time-tracking UI
+
+</details>
