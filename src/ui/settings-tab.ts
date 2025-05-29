@@ -46,6 +46,16 @@ export class DayPlannerSettingsTab extends PluginSettingTab {
       );
 
     new Setting(containerEl)
+      .setName("Run Script on Notification")
+      .setDesc("Runs the provided script when a new task is started. Requires 'Task Notification' to be enabled")
+      .addText((el) => {
+        el
+          .setPlaceholder("Path to script")
+          .setValue(this.plugin.settings().execScriptPath)
+          .onChange((value: string) => { this.update({ execScriptPath: value }) });
+      });
+
+    new Setting(containerEl)
       .setName("Center the Pointer in the Timeline View")
       .setDesc(
         "Should the pointer continuously get scrolled to the center of the view",
