@@ -63,6 +63,7 @@ export interface DayPlannerSettings {
   sortTasksInPlanAfterEdit: boolean;
   firstDayOfWeek: (typeof firstDaysOfWeek)[number];
   multiDayRange: "full-week" | "work-week" | "3-days";
+  execScriptPath: string;
 }
 
 export interface Cache {
@@ -110,6 +111,7 @@ export const defaultSettings: DayPlannerSettings = {
   multiDayRange: "3-days",
   showTimeTracker: false,
   showActiveClocks: false,
+  execScriptPath: "~/.config/obsidian/dayplanner.sh",
 };
 
 export const defaultSettingsForTests = {
