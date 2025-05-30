@@ -1,13 +1,42 @@
 ## What this fork is for
 
-I want to be able to execute bash scripts triggered by the starting of new day planner tasks!  
-Why? This enables my obsidian day planner tasks to act as a sort of publisher of my tasks to other apps in my eco-system!
+To enable the execution of scripts triggered day planner tasks!
+Why? This enables obsidian day planner to act as a publisher of tasks to other apps!
 
 - Send notification of current task to your phone via [ntfy.sh](https://ntfy.sh/)
 - Send updates of current task to [sketchybar](https://github.com/FelixKratz/SketchyBar)
 
+### Scripting
+
+In the settings, you can specify the path your script.  
+The script will be executed whenever there is change to the active task or upcoming task.  
+3 Environment variables are passed into the script:
+
+> [!note] DAY_PLANNER_TASK_STATUS
+> Possible values:
+> "0": all tasks done
+> "1": This task is currently active
+> "2": This task is upcoming
+
+> [!note] DAY_PLANNER_TASK_TITLE
+> Possible values:
+>
+> - The task title
+> - "done" if task status is "0"
+
+> [!note] DAY_PLANNER_TASK_TIMESTAMP
+> Format: "xx:xx - xx:xx"
+> Format is fixed.
+
+### Improvements/Features/Plans
+
+- Add support for windows?
+
+## The Original Readme
+
 <details>
   <summary>Original Readme</summary>
+
 - 🗳️ [Add '👍' reactions under the issues important to you.](https://github.com/ivan-lednev/obsidian-day-planner/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc) This helps me prioritize my work
 - 🪲 [Report bugs and suggest features](https://github.com/ivan-lednev/obsidian-day-planner/issues)
 - ❓ [Ask questions](https://github.com/ivan-lednev/obsidian-day-planner/discussions/new?category=q-a)
