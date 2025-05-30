@@ -10,23 +10,21 @@ Why? This enables obsidian day planner to act as a publisher of tasks to other a
 
 In the settings, you can specify the path your script.  
 The script will be executed whenever there is change to the active task or upcoming task.  
+
 3 Environment variables are passed into the script:
 
-> [!note] DAY_PLANNER_TASK_STATUS
-> Possible values:
-> "0": all tasks done
-> "1": This task is currently active
-> "2": This task is upcoming
+`DAY_PLANNER_TASK_STATUS`   
+> "0": all tasks done   
+> "1": This task is currently active   
+> "2": This task is upcoming   
 
-> [!note] DAY_PLANNER_TASK_TITLE
-> Possible values:
->
-> - The task title
-> - "done" if task status is "0"
+`DAY_PLANNER_TASK_TITLE`
+> - The task title   
+> - "done" if task status is "0"   
 
-> [!note] DAY_PLANNER_TASK_TIMESTAMP
-> Format: "xx:xx - xx:xx"
-> Format is fixed.
+`DAY_PLANNER_TASK_TIMESTAMP`
+> Format: "xx:xx - xx:xx"   
+> Format is fixed.   
 
 ### Improvements/Features/Plans
 
