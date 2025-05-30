@@ -5,7 +5,7 @@ import {
   WorkspaceLeaf,
   type MarkdownFileInfo,
 } from "obsidian";
-import {} from "obsidian-daily-notes-interface";
+import { } from "obsidian-daily-notes-interface";
 import { getAPI } from "obsidian-dataview";
 import { fromStore, get, writable, type Writable } from "svelte/store";
 import { isInstanceOf, isNotVoid } from "typed-assert";
@@ -63,6 +63,7 @@ import { createRenderMarkdown } from "./util/create-render-markdown";
 import { createShowPreview } from "./util/create-show-preview";
 import { createDailyNoteIfNeeded } from "./util/daily-notes";
 import { notifyAboutStartedTasks } from "./util/notify-about-started-tasks";
+import { execOnTasks } from "./util/exec-on-tasks";
 
 export default class DayPlanner extends Plugin {
   settings!: () => DayPlannerSettings;
@@ -408,6 +409,12 @@ export default class DayPlanner extends Plugin {
     });
 
     this.register(destroyStatusBarWidget);
+
+    this.register(
+      tasksWithTimeForToday.subscribe((value) =>
+        execOnTasks(value, this.settings()),
+      )
+    )
 
     this.register(
       newlyStartedTasks.subscribe((value) =>

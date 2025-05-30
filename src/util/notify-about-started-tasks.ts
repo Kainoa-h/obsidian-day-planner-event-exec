@@ -24,23 +24,4 @@ export function notifyAboutStartedTasks(
 
   new Notification(`Task started: ${summary}
 ${timestamp}`);
-  console.log(`script: ${settings.execScriptPath}`)
-
-  if (settings.execScriptPath) {
-    exec(`bash ${settings.execScriptPath}`, {
-      env: {
-        ...process.env,
-        DAY_PLANNER_EVENT_TITLE: summary,
-        DAY_PLANNER_EVENT_TIMESTAMP: timestamp,
-      },
-    }, (error, stdout, stderr) => {
-      if (error) {
-        new Notice("Day Planner: script failed", 0);
-        console.log(stderr);
-      }
-      else {
-        new Notice("Day Planner: script executed", 5500);
-      }
-    });
-  }
 }

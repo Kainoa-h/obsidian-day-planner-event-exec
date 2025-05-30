@@ -45,9 +45,30 @@ export class DayPlannerSettingsTab extends PluginSettingTab {
           }),
       );
 
+    //TODO:Add proper name and description
     new Setting(containerEl)
-      .setName("Run Script on Notification")
-      .setDesc("Runs the provided script when a new task is started. Requires 'Task Notification' to be enabled")
+      .setName("Run a Script when active task changes")
+      .setDesc(
+        createFragment((fragment) => {
+          fragment.append(
+            createEl("p", {
+              text: "Leave empty to disable",
+            }),
+            createEl("p", {
+              text: "3 Environment variables will be passed in:",
+            }),
+            createEl("p", {
+              text: "'$DAY_PLANNER_TASK_TIMESTAMP' has the format (xx:xx - xx:xx).",
+            }),
+            createEl("p", {
+              text: "'$DAY_PLANNER_TASK_TITLE' is the task title.",
+            }),
+            createEl("p", {
+              text: "'$DAY_PLANNER_TASK_STATUS' is either -> '0': all tasks completed, '1': this is an active task, '2': this is an upcoming task",
+            }),
+          );
+        }),
+      )
       .addText((el) => {
         el
           .setPlaceholder("Path to script")
