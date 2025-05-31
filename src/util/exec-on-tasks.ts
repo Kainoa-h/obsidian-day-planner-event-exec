@@ -18,9 +18,11 @@ export function execOnTasks(
   tasks: WithTime<Task>[],
   settings: DayPlannerSettings,
 ) {
+  if (!settings.execScriptPath) return;
+
   if (tasks.length === 0) {
     if (prevTask)
-      runScript("", "done", taskState.done, settings);
+      runScript("", "done", taskState.done, settings.execScriptPath);
     prevTask = undefined;
     prevTaskState = taskState.done;
     return;
@@ -42,7 +44,7 @@ export function execOnTasks(
       currentTask.durationMinutes,
       settings.timestampFormat,
     );
-    runScript(timestamp, title, taskState.active, settings);
+    runScript(timestamp, title, taskState.active, settings.execScriptPath);
     prevTask = currentTask;
     prevTaskState = taskState.active;
     return;
@@ -57,33 +59,31 @@ export function execOnTasks(
       nextTask.durationMinutes,
       settings.timestampFormat,
     );
-    runScript(timestamp, title, taskState.upcoming, settings);
+    runScript(timestamp, title, taskState.upcoming, settings.execScriptPath);
     prevTask = nextTask;
     prevTaskState = taskState.upcoming;
     return;
   }
 
   if (prevTask)
-    runScript("", "done", taskState.done, settings);
+    runScript("", "done", taskState.done, settings.execScriptPath);
   prevTask = undefined;
   prevTaskState = taskState.done;
   return;
 }
 
-function runScript(timestamp: string, title: string, status: string, settings: DayPlannerSettings) {
-  if (settings.execScriptPath) {
-    exec(`bash ${settings.execScriptPath}`, {
-      env: {
-        ...process.env,
-        DAY_PLANNER_TASK_TITLE: title.trim(),
-        DAY_PLANNER_TASK_TIMESTAMP: timestamp,
-        DAY_PLANNER_TASK_STATUS: status,
-      },
-    }, (error, stdout, stderr) => {
-      if (error) {
-        new Notice("Day Planner: script failed", 3000);
-        console.log(stderr);
-      }
-    });
-  }
+function runScript(timestamp: string, title: string, status: string, scriptPath: string) {
+  exec(`bash ${scriptPath}`, {
+    env: {
+      ...process.env,
+      DAY_PLANNER_TASK_TITLE: title.trim(),
+      DAY_PLANNER_TASK_TIMESTAMP: timestamp,
+      DAY_PLANNER_TASK_STATUS: status,
+    },
+  }, (error, stdout, stderr) => {
+    if (error) {
+      new Notice("Day Planner: script failed", 3000);
+      console.log(stderr);
+    }
+  });
 }
