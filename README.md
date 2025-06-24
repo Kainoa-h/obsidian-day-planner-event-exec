@@ -6,27 +6,34 @@ Why? This enables obsidian day planner to act as a publisher of tasks to other a
 - Send notification of current task to your phone via [ntfy.sh](https://ntfy.sh/)
 - Send updates of current task to [sketchybar](https://github.com/FelixKratz/SketchyBar)
 
-### Scripting
+### Sketchybar Integration
+
+## Scripting
+
+![demo of integration with sketchybar](./assets/sketchybar-dayplanner.gif)
 
 In the settings, you can specify the path your script.  
-The script will be executed whenever there is change to the active task or upcoming task.  
+The script will be executed whenever there is change to the active task or upcoming task.
 
 3 Environment variables are passed into the script:
 
-`DAY_PLANNER_TASK_STATUS`   
-> "0": all tasks done   
-> "1": This task is currently active   
-> "2": This task is upcoming   
+`DAY_PLANNER_TASK_STATUS`
+
+> "0": all tasks done  
+> "1": This task is currently active  
+> "2": This task is upcoming
 
 `DAY_PLANNER_TASK_TITLE`
-> - The task title   
-> - "done" if task status is "0"   
+
+> - The task title
+> - "done" if task status is "0"
 
 `DAY_PLANNER_TASK_TIMESTAMP`
-> Format: "xx:xx - xx:xx"   
-> Format is fixed.   
 
-### Improvements/Features/Plans
+> Format: "xx:xx - xx:xx"  
+> Format is fixed.
+
+## Improvements/Features/Plans
 
 - Add support for windows?
 
