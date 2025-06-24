@@ -8,9 +8,9 @@ Why? This enables obsidian day planner to act as a publisher of tasks to other a
 
 ### Sketchybar Integration
 
-## Scripting
-
 ![demo of integration with sketchybar](./assets/sketchybar-dayplanner.gif)
+
+## Scripting
 
 In the settings, you can specify the path your script.  
 The script will be executed whenever there is change to the active task or upcoming task.
